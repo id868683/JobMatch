@@ -1,0 +1,140 @@
+﻿/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Màu nền sáng cho toàn bộ trang */
+    margin-bottom: 60px; /* Giúp không bị che bởi footer */
+}
+
+/* Navbar Styling */
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-word;
+    font-size: 1.5rem;
+}
+
+a {
+    color: #0366d6; /* Xanh dương cho liên kết */
+}
+
+    a:hover {
+        color: #0056b3; /* Màu xanh đậm khi hover */
+        text-decoration: underline;
+    }
+
+/* Button Styling */
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+    .btn-primary:hover {
+        background-color: #1861ac;
+        border-color: #1a4e87;
+    }
+
+/* Active Navigation Links */
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky Footer Styles */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #333; /* Màu xám đậm cho footer */
+    color: white;
+    line-height: 60px; /* Vertically center the text */
+    text-align: center;
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* Sidebar Styling */
+aside {
+    background-color: #555; /* Sidebar có nền xám */
+    color: white;
+    padding: 20px;
+    border-right: 1px solid #e5e5e5;
+}
+
+    aside h4 {
+        font-size: 1.25rem;
+        margin-bottom: 15px;
+    }
+
+    aside a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+        aside a:hover {
+            color: #ff6f61; /* Màu đỏ nhạt khi hover */
+        }
+
+/* Main Content Styling */
+main {
+    background-color: #fff; /* Nền trắng cho nội dung chính */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+    main h2 {
+        font-size: 1.75rem;
+        color: #333; /* Màu chữ xám đen */
+    }
+
+    main p {
+        font-size: 1rem;
+        color: #666; /* Màu chữ xám nhạt cho phần nội dung */
+    }
+
+/* Box Shadow */
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 0;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .main, .sidebar {
+        padding: 10px;
+    }
+
+    aside {
+        display: none; /* Ẩn sidebar trên thiết bị di động */
+    }
+
+    main {
+        width: 100%; /* Mở rộng main content trên thiết bị nhỏ */
+    }
+}

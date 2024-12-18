@@ -1,0 +1,68 @@
+﻿@model IEnumerable<JobMatch.Models.Job>
+
+@{
+    ViewData["Title"] = "JobList";
+}
+
+<h1>Job List</h1>
+
+<div class="container mb-3 mt-3">
+    <div class="row">
+        <div class="col-md-8">
+            <form method="post" asp-controller="Jobsd" asp-action="Search">
+                <input class="form-control" type="search" required name="Model" placeholder="Search For Your Job" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="@item.Image" class="card-img-top" alt="@item.Image" style="height: 100px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text">
+                        <strong>Name:</strong> @item.Name<br />
+                        <strong>Description:</strong>@item.Description<br />
+                        <strong>Salary:</strong>$@item.Salary<br />
+                        <strong>Company:</strong> @item.Company.Name<br />
+
+                    </p>
+                </div>
+                <div class="card-footer text-center">
+
+                    <a asp-action="Status" asp-controller="Jobs" asp-route-id="@item.Name" class="btn btn-primary"> Apply</a>                   
+                  
+            </div>
+                @*  <div class="card-footer text-center">
+                    <button class="btn btn-primary">Apply</button>
+                </div> *@
+                <!-- Thông báo Bootstrap -->
+               @*  <div id="applyMessage" class="alert alert-success text-center mt-3" role="alert" style="display: none;">
+                    Công việc đã được Apply!
+                </div>
+
+                <script>
+                    // Lấy nút và phần hiển thị thông báo
+                    const applyButton = document.getElementById('applyButton');
+                    const applyMessage = document.getElementById('applyMessage');
+
+                    // Thêm sự kiện click
+                    applyButton.addEventListener('click', function () {
+                        // Hiển thị thông báo
+                        applyMessage.style.display = 'block';
+
+                        // Tùy chọn: Tự động ẩn thông báo sau vài giây
+                        setTimeout(() => {
+                            applyMessage.style.display = 'none';
+                        }, 3000); // 3 giây
+                    });
+                </script> *@
+                
+            </div>
+        </div>
+    }
+</div>
