@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using JobMatch.Data;
 using JobMatch.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JobMatch.Controllers
 {
@@ -42,6 +43,7 @@ namespace JobMatch.Controllers
 
             return View(company);
         }
+        [Authorize(Roles = "Admin")]
 
         // GET: Companies/Create
         public IActionResult Create()

@@ -47,9 +47,24 @@ namespace JobMatch.Controllers
             var jobs = _context.Job.Include(j => j.Company.Name);
             return View(await jobs.ToListAsync());
         }
-      
 
 
+        // Thêm phương thức tìm kiếm
+        // search by key word Name, Description, company 
+        public async Task<IActionResult> Search(string keyword)
+        {
+            var jobs = from j in _context.Job.Include(j => j.Company)
+                       select j;
+
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                jobs = jobs.Where(j => j.Name.Contains(keyword) ||
+                                       j.Description.Contains(keyword) ||
+                                       j.Company.Name.Contains(keyword));
+            }
+
+            return View("ListJob", await jobs.ToListAsync());
+        }
 
         //public IActionResult Status(int id)
         //{
@@ -83,8 +98,10 @@ namespace JobMatch.Controllers
 
             return View(job);
         }
-        [Authorize]
+      
         // GET: Jobs/Create
+        [Authorize]
+
         public IActionResult Create()
         {
             ViewData["CompanyId"] = new SelectList(_context.Company, "Id", "Name");
@@ -125,7 +142,7 @@ namespace JobMatch.Controllers
             ViewData["CompanyId"] = new SelectList(_context.Set<Company>(), "Id", "Id", job.CompanyId);
             return View(job);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Jobs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -210,7 +227,7 @@ namespace JobMatch.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        [Authorize(Roles = "Admin")]
+      
 
 
         private bool JobExists(int id)

@@ -8,9 +8,11 @@
 
 <div class="container mb-3 mt-3">
     <div class="row">
-        <div class="col-md-8">
-            <form method="post" asp-controller="Jobsd" asp-action="Search">
-                <input class="form-control" type="search" required name="Model" placeholder="Search For Your Job" />
+@*         search the job
+ *@        <div class="col-md-8">
+            <form asp-action="Search" method="get">
+                <input type="text" name="keyword" placeholder="Search jobs..." class="form-control d-inline" style="width: auto;" />
+                <button class="btn btn-primary search-button" type="submit">Search</button>
             </form>
         </div>
     </div>
@@ -19,7 +21,8 @@
 <div class="row">
     @foreach (var item in Model)
     {
-        <div class="col-md-3 mb-4">
+@*         display job data
+ *@        <div class="col-md-3 mb-4">
             <div class="card h-100 shadow-sm">
                 <img src="@item.Image" class="card-img-top" alt="@item.Image" style="height: 100px; object-fit: cover;">
                 <div class="card-body">
@@ -37,30 +40,7 @@
                     <a asp-action="Status" asp-controller="Jobs" asp-route-id="@item.Name" class="btn btn-primary"> Apply</a>                   
                   
             </div>
-                @*  <div class="card-footer text-center">
-                    <button class="btn btn-primary">Apply</button>
-                </div> *@
-                <!-- Thông báo Bootstrap -->
-               @*  <div id="applyMessage" class="alert alert-success text-center mt-3" role="alert" style="display: none;">
-                    Công việc đã được Apply!
-                </div>
-
-                <script>
-                    // Lấy nút và phần hiển thị thông báo
-                    const applyButton = document.getElementById('applyButton');
-                    const applyMessage = document.getElementById('applyMessage');
-
-                    // Thêm sự kiện click
-                    applyButton.addEventListener('click', function () {
-                        // Hiển thị thông báo
-                        applyMessage.style.display = 'block';
-
-                        // Tùy chọn: Tự động ẩn thông báo sau vài giây
-                        setTimeout(() => {
-                            applyMessage.style.display = 'none';
-                        }, 3000); // 3 giây
-                    });
-                </script> *@
+              
                 
             </div>
         </div>

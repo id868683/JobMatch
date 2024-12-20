@@ -7,6 +7,8 @@
 <h2>Status</h2>
 
 <div class="card">
+@*       display job data
+ *@
     @foreach (var item in Model){
     <img src="@item.Image" class="card-img-top" alt="Job Image" style="height: 200px; object-fit: cover;">
     <div class="card-body">
@@ -14,7 +16,8 @@
             <p><strong>Description:</strong> @item.Description</p>
             <p><strong>Salary:</strong> $@item.Salary</p>
             <p><strong>Company:</strong> @item.Company.Name</p>
-    </div>
+        </div> @*       display notification 
+    *@
         <div class="card-footer text-center">
             <form method="post" asp-action="Status" asp-controller="Jobs" id="jobForm">
                 <input type="hidden" name="id" value="@item.Id" />
@@ -23,7 +26,7 @@
                         name="action"
                         value="Accept"
                         class="btn btn-success"
-                        onclick="return showAlert('Công việc được Accept');">
+                        onclick="return showAlert('Công việc của User@gmail.com được Accept');">
                     Accept
                 </button>
 
